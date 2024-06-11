@@ -27,5 +27,9 @@ jobs:
             - name: PKG-TEST
               run: |
                   python -m unittest discover tests/
-            - run: mkdocs gh-deploy --force
+            - name: Build docs-yml docs
+              env: 
+                GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: | 
+                mkdocs gh-deploy --force --remote-name origin --remote-branch gh-pages
 
