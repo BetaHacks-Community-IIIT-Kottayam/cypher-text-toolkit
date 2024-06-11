@@ -8,7 +8,7 @@
 
 
 -   Free software: MIT License
--   Documentation: <https://sarthakg043.github.io/cyphertext>
+-   Documentation: <https://betahacks-community-iiit-kottayam.github.io/cypher-text-toolkit>
     
 
 ## Features

@@ -9,7 +9,7 @@
 
 
 -   Free software: MIT License
--   Documentation: https://sarthakg043.github.io/cypher-text-toolkit
+-   Documentation: https://betahacks-community-iiit-kottayam.github.io/cypher-text-toolkit/
     
 
 ## Features

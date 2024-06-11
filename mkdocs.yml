@@ -1,8 +1,8 @@
 site_name: cypher-text-toolkit
 site_description: Cypher Text Toolkit contains large number of encryption decryption functions for different types of cypher texts. I also provides an interface for Crypto-researchers, CTF players, enterprises and security personnel to customize cypher texts and easily integrate them in their product/organisation/research.
 site_author: sarthakg043
-site_url: https://sarthakg043.github.io/cypher-text-toolkit
-repo_url: https://github.com/sarthakg043/cypher-text-toolkit
+site_url: https://betahacks-community-iiit-kottayam.github.io/cypher-text-toolkit
+repo_url: https://github.com/BetaHacks-Community-IIIT-Kottayam/cypher-text-toolkit
 
 copyright: "Copyright &copy; 2024 - 2024 Sarthak Gupta"
 
@@ -78,7 +78,7 @@ nav:
     - Contributing: contributing.md
     - FAQ: faq.md
     - Changelog: changelog.md
-    - Report Issues: https://github.com/sarthakg043/cypher-text-toolkit/issues
+    - Report Issues: https://github.com/BetaHacks-Community-IIIT-Kottayam/cypher-text-toolkit/issues
     - Examples:
         - examples/intro.ipynb
     - API Reference:
