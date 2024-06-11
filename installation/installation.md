@@ -17,5 +17,5 @@ If you don't have [pip](https://pip.pypa.io) installed, this [Python installatio
 To install cyphertext from sources, run this command in your terminal:
 
 ```
-pip install git+https://github.com/sarthakg043/cypher-text-toolkit
+pip install git+https://github.com/BetaHacks-Community-IIIT-Kottayam/cypher-text-toolkit
 ```
