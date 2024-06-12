@@ -2,9 +2,9 @@
 This module contains functions to encode text using some common ciphers, along with some custom ciphers.
 """
 
-def ceaser(message, key):
+def Caesar(message, key):
     """
-    Applies the Ceaser cipher to the given message using the specified key.
+    Applies the Caesar cipher to the given message using the specified key.
 
     Args:
         message (str): The message to be encoded.
