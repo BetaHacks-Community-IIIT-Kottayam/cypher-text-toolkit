@@ -20,14 +20,14 @@ class TestCyphertext(unittest.TestCase):
     def test_000_something(self):
         """Test something."""
     def test_shift_001(self):
-        self.assertEqual(ascii_shift("Hello, World!", 3), 'Khoor/#Zruog!')
+        self.assertEqual(ascii_shift("Hello, World!", 3), 'Khoor/#Zruog$')
     def test_shift_002(self):
-        self.assertEqual(ascii_shift("Hello, World!", 0), 'Hello, World!')
+        self.assertEqual(ascii_shift("Hello, World!", 0), 'Hello, World$')
     def test_shift_003(self):
-        self.assertEqual(ascii_shift("Hello, World!", 26), 'Gdkkn/#Vnqkc!')
+        self.assertEqual(ascii_shift("Hello, World!", 26), 'Gdkkn/#Vnqkc$')
     def test_shift_004(self):
-        self.assertEqual(ascii_shift("Hello, World!", 27), 'Ifmmp/#Xpsme!')
+        self.assertEqual(ascii_shift("Hello, World!", 27), 'Ifmmp/#Xpsme$')
     def test_shift_005(self):
-        self.assertEqual(ascii_shift("Hello, World!", 128), 'Hello, World!')
+        self.assertEqual(ascii_shift("Hello, World!", 128), 'Hello, World$')
     def test_shift_006(self):
-        self.assertEqual(ascii_shift("Hello, World!", -3), 'Ebiil/#Tloia!')
+        self.assertEqual(ascii_shift("Hello, World!", -3), 'Ebiil/#Tloia$')
