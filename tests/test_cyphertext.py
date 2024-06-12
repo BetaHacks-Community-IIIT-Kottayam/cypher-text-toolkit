@@ -19,15 +19,15 @@ class TestCyphertext(unittest.TestCase):
 
     def test_000_something(self):
         """Test something."""
-    def test_shift_001(self):
-        self.assertEqual(ascii_shift("Hello, World!", 3), 'Khoor/#Zruog$')
-    def test_shift_002(self):
-        self.assertEqual(ascii_shift("Hello, World!", 0), 'Hello, World$')
-    def test_shift_003(self):
-        self.assertEqual(ascii_shift("Hello, World!", 26), 'Gdkkn/#Vnqkc$')
-    def test_shift_004(self):
-        self.assertEqual(ascii_shift("Hello, World!", 27), 'Ifmmp/#Xpsme$')
-    def test_shift_005(self):
-        self.assertEqual(ascii_shift("Hello, World!", 128), 'Hello, World$')
-    def test_shift_006(self):
-        self.assertEqual(ascii_shift("Hello, World!", -3), 'Ebiil/#Tloia$')
+    def test_ceaser_001(self):
+        self.assertEqual(ceaser('Hello, World!', 3), 'KHOOR, ZRUOG!')
+    def test_ceaser_002(self):
+        self.assertEqual(ceaser('Hello, World!', 0), 'HELLO, WORLD!')
+    def test_ceaser_003(self):
+        self.assertEqual(ceaser('Hello, World!', 26), 'HELLO, WORLD!')
+    def test_ceaser_004(self):
+        self.assertEqual(ceaser('Hello, World!', 27), 'IFMMP, XPSME!')
+    def test_ceaser_005(self):
+        self.assertEqual(ceaser('Hello, World!', 128), 'FCJJM, UMPJB!')
+    def test_ceaser_006(self):
+        self.assertEqual(ceaser('Hello, World!', -3), 'EBIIL, TLOIA!')
