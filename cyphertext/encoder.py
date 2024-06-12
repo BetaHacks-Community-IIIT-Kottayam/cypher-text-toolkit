@@ -27,10 +27,3 @@ def ceaser(message, key):
         else:
             str_result += char
     return str_result
-
-print(f"self.assertEqual(ascii_shift('Hello, World!', 3), '{ceaser("Hello, World!", 3)}')")
-print(f"self.assertEqual(ascii_shift('Hello, World!', 0), '{ceaser("Hello, World!", 0)}')")
-print(f"self.assertEqual(ascii_shift('Hello, World!', 26), '{ceaser("Hello, World!", 26)}')")
-print(f"self.assertEqual(ascii_shift('Hello, World!', 27), '{ceaser("Hello, World!", 27)}')")
-print(f"self.assertEqual(ascii_shift('Hello, World!', 128), '{ceaser("Hello, World!", 128)}')")
-print(f"self.assertEqual(ascii_shift('Hello, World!', -3), '{ceaser("Hello, World!", -3)}')")
