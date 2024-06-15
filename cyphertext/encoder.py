@@ -39,8 +39,7 @@ def piglatin(message):
         str: The encoded message.
 
     """
-    vowels = ['a', 'e', 'i', 'o', 'u']
-    message = message.lower()
+    vowels = ['a', 'e', 'i', 'o', 'u','A','E','I','O','U']
     str_result = ""
 
     for word in message.split():
