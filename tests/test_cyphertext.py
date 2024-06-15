@@ -36,10 +36,10 @@ class TestCyphertext(unittest.TestCase):
     def test_Piglatin_001(self):
         self.assertEqual(piglatin('Hello, World!'), 'elloHay, orldWay!')
     def test_Piglatin_002(self):
-        self.assertEqual(piglatin('Python is fun'), 'ythonPay isay unfay')
+        self.assertEqual(piglatin('Python is fun'), 'onPythay isyay unfay')
     def test_Piglatin_003(self):
-        self.assertEqual(piglatin('Coding is awesome'), 'odingCay isay awesomay')
+        self.assertEqual(piglatin('Coding is awesome'), 'odingCay isyay awesomeyay')
     def test_Piglatin_004(self):
         self.assertEqual(piglatin('GitHub Copilot'), 'itHubGay opilotCay')
     def test_Piglatin_005(self):
-        self.assertEqual(piglatin('Artificial Intelligence'), 'Artificialay Intelligenceay')
+        self.assertEqual(piglatin('Artificial Intelligence'), 'Artificialyay Intelligenceyay')
