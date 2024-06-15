@@ -45,6 +45,8 @@ def piglatin(message):
     for word in message.split():
         if word[0] in vowels:
             str_result += word + "yay "
+        elif not word.isalpha():
+            str_result += word + " "
         else:
             while word[0] not in vowels:
                 word = word[1:] + word[0]
