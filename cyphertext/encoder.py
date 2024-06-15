@@ -27,3 +27,28 @@ def caesar(message, key):
         else:
             str_result += char
     return str_result
+
+def piglatin(message):
+    """
+    Applies the Pig Latin cipher to the given message.
+
+    Args:
+        message (str): The message to be encoded.
+
+    Returns:
+        str: The encoded message.
+
+    """
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    message = message.lower()
+    str_result = ""
+
+    for word in message.split():
+        if word[0] in vowels:
+            str_result += word + "yay "
+        else:
+            while word[0] not in vowels:
+                word = word[1:] + word[0]
+            str_result += word + "ay "
+    return str_result
+
