@@ -13,34 +13,39 @@ jobs:
     test-windows:
         runs-on: windows-latest
         steps:
-            - uses: actions/checkout@v4
-            
-            - name: Install miniconda
-              uses: conda-incubator/setup-miniconda@v2
-              with:
-                auto-activate-base: true
-                python-version: "3.11"
+        - uses: actions/checkout@v4
+        
+        - name: Install miniconda
+          uses: conda-incubator/setup-miniconda@v2
+          with:
+            auto-activate-base: true
+            python-version: "3.11"
 
-            - name: Install GDAL
-              run: conda install -c conda-forge gdal --yes
+        - name: Install GDAL
+          run: conda install -c conda-forge gdal --yes
 
-            - name: Set GDAL environment variables
-              run: |
-                setx GDAL_DATA "%CONDA_PREFIX%\Library\share\gdal"
-                setx PROJ_LIB "%CONDA_PREFIX%\Library\share\proj"
+        - name: Set GDAL environment variables
+          run: |
+            echo Setting GDAL_DATA to %CONDA_PREFIX%\Library\share\gdal
+            echo Setting PROJ_LIB to %CONDA_PREFIX%\Library\share\proj
+            echo Setting PATH to %CONDA_PREFIX%\Library\bin;%PATH%
+            setx GDAL_DATA "%CONDA_PREFIX%\Library\share\gdal"
+            setx PROJ_LIB "%CONDA_PREFIX%\Library\share\proj"
+            setx PATH "%CONDA_PREFIX%\Library\bin;%PATH%"
 
-            - name: Add GDAL to PATH
-              run: |
-                setx PATH "%CONDA_PREFIX%\Library\bin;%PATH%"
+        - name: Verify GDAL installation and environment variables
+          run: |
+            echo GDAL_DATA=%GDAL_DATA%
+            echo PROJ_LIB=%PROJ_LIB%
+            echo PATH=%PATH%
+            conda list gdal
+            where gdalinfo
+            gdalinfo --version
+            python -c "import os; print('GDAL_DATA:', os.getenv('GDAL_DATA')); print('PROJ_LIB:', os.getenv('PROJ_LIB')); from osgeo import gdal; print('GDAL Version:', gdal.__version__)"
 
-            - name: Test GDAL installation
-              run: |
-                python -c "from osgeo import gdal"
-                gdalinfo --version
-
-            - name: Install dependencies
-              run: |
-                python -m pip install --upgrade pip
-                pip install --no-cache-dir Cython
-                pip install -r requirements.txt
-                pip install .
+        - name: Install dependencies
+          run: |
+            python -m pip install --upgrade pip
+            pip install --no-cache-dir Cython
+            pip install -r requirements.txt
+            pip install .
