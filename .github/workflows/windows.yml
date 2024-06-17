@@ -18,34 +18,36 @@ jobs:
             - name: Install Miniconda
               uses: conda-incubator/setup-miniconda@v2
               with:
-                  auto-activate-base: true
+                  auto-activate-base: false
                   python-version: "3.11"
 
             - name: Update Conda
+              shell: bash -l {0}
               run: conda update -n base -c defaults conda --yes
 
             - name: Create Environment
+              shell: bash -l {0}
               run: conda create --name test-env python=3.11 --yes
 
-            - name: Activate Environment
-              run: conda activate test-env
+            - name: Activate Environment and Install GDAL
               shell: bash -l {0}
-
-            - name: Install GDAL
-              run: conda install -c conda-forge gdal --yes
+              run: |
+                  source activate test-env
+                  conda install -c conda-forge gdal --yes
 
             - name: Test GDAL Installation
+              shell: bash -l {0}
               run: |
-                  conda activate test-env
+                  source activate test-env
                   python -c "from osgeo import gdal"
                   gdalinfo --version
-              shell: bash -l {0}
 
             - name: Install Dependencies
+              shell: bash -l {0}
               run: |
-                  conda activate test-env
+                  source activate test-env
                   python -m pip install --upgrade pip
                   pip install --no-cache-dir Cython
                   pip install -r requirements.txt
                   pip install .
-              shell: bash -l {0}
+
