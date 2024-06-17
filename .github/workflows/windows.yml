@@ -32,20 +32,20 @@ jobs:
             - name: Activate Environment and Install GDAL
               shell: bash -l {0}
               run: |
-                  source activate test-env
+                  conda activate test-env
                   conda install -c conda-forge gdal --yes
 
             - name: Test GDAL Installation
               shell: bash -l {0}
               run: |
-                  source activate test-env
+                  conda activate test-env
                   python -c "from osgeo import gdal"
                   gdalinfo --version
 
             - name: Install Dependencies
               shell: bash -l {0}
               run: |
-                  source activate test-env
+                  conda activate test-env
                   python -m pip install --upgrade pip
                   pip install --no-cache-dir Cython
                   pip install -r requirements.txt
