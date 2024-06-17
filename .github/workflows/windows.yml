@@ -14,21 +14,39 @@ jobs:
         runs-on: windows-latest
         steps:
             - uses: actions/checkout@v4
-            - name: Install miniconda
+            
+            - name: Install Miniconda
               uses: conda-incubator/setup-miniconda@v2
               with:
                   auto-activate-base: true
                   python-version: "3.11"
 
+            - name: Update Conda
+              run: conda update -n base -c defaults conda --yes
+
+            - name: Create Environment
+              run: conda create --name test-env python=3.11 --yes
+
+            - name: Activate Environment
+              run: conda activate test-env
+              shell: bash -l {0}
+
             - name: Install GDAL
               run: conda install -c conda-forge gdal --yes
-            - name: Test GDAL installation
+
+            - name: Test GDAL Installation
               run: |
+                  conda activate test-env
                   python -c "from osgeo import gdal"
                   gdalinfo --version
-            - name: Install dependencies
+              shell: bash -l {0}
+
+            - name: Install Dependencies
               run: |
+                  conda activate test-env
                   python -m pip install --upgrade pip
                   pip install --no-cache-dir Cython
                   pip install -r requirements.txt
                   pip install .
+              shell: bash -l {0}
+
