@@ -26,3 +26,30 @@ def caesar(message, key):
         else:
             str_result += char
     return str_result
+
+def affine(message, a, b):
+    """
+    Decode a message encrypted using the Affine cipher.
+
+    Args:
+        message (str): The encrypted message to be decoded.
+        a (int): The first key used for encryption.
+        b (int): The second key used for encryption.
+
+    Returns:
+        str: The decoded message.
+
+    """
+    message = message.upper()
+    str_result = ""
+
+    for char in message:
+        if char.isalpha():
+            n = ord(char)
+            n -= 65
+            n = ((n - b) * pow(a,-1, 26)) % 26
+            n += 65
+            str_result += chr(n)
+        else:
+            str_result += char
+    return str_result

@@ -36,3 +36,14 @@ class TestEncoder(unittest.TestCase):
         self.assertEqual(encoder.piglatin('GitHub Copilot'), 'itHubGay opilotCay')
     def test_Piglatin_005(self):
         self.assertEqual(encoder.piglatin('Artificial Intelligence'), 'Artificialyay Intelligenceyay')
+    # Affine
+    def test_Affine_001(self):
+        self.assertEqual(encoder.affine('Hello, World!', 3, 7), 'OVDDE, GYBUJ!')
+    def test_Affine_002(self):
+        self.assertEqual(encoder.affine('Hello, World!', 1, 0), 'HELLO, WORLD!')
+    def test_Affine_003(self):
+        self.assertEqual(encoder.affine('Hello, World!', 5, 12), 'AXEEH, LQJBE!')
+    def test_Affine_004(self):
+        self.assertEqual(encoder.affine('Hello, World!', 9, 21), 'QEBYY, XIAHD!')
+    def test_Affine_005(self):
+        self.assertEqual(encoder.affine('Hello, World!', 25, 3), 'GDKKN, VNQKC!')
