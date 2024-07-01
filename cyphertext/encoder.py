@@ -76,3 +76,30 @@ def piglatin(message):
         else:
             str_result += start_punc + end_punc + " "
     return str_result.strip()
+
+def affine(message, a, b):
+    """
+    Applies the Affine cipher to the given message using the specified keys.
+
+    Args:
+        message (str): The message to be encoded.
+        a (int): The first key.
+        b (int): The second key.
+
+    Returns:
+        str: The encoded message.
+
+    """
+    str_result = ""
+    message = message.upper()
+    for char in message:
+        if char.isalpha() == False:
+            str_result += char
+            continue
+        n = ord(char)
+        n -= 65
+        n = ((n * a) + b) % 26
+        n += 65
+        str_result += chr(n)
+
+    return str_result
