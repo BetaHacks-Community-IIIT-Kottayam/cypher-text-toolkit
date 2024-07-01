@@ -91,14 +91,15 @@ def affine(message, a, b):
 
     """
     str_result = ""
-
+    message = message.upper()
     for char in message:
-        if char.isalpha():
-            n = ord(char)
-            n -= 65
-            n = ((a * n + b) % 26)
-            n += 65
-            str_result += chr(n)
-        else:
+        if char.isalpha() == False:
             str_result += char
+            continue
+        n = ord(char)
+        n -= 65
+        n = ((n * a) + b) % 26
+        n += 65
+        str_result += chr(n)
+
     return str_result

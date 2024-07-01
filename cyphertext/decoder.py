@@ -42,14 +42,15 @@ def affine(message, a, b):
     """
     message = message.upper()
     str_result = ""
-
     for char in message:
-        if char.isalpha():
-            n = ord(char)
-            n -= 65
-            n = ((n - b) * pow(a,-1, 26)) % 26
-            n += 65
-            str_result += chr(n)
-        else:
+        if char.isalpha() == False:
             str_result += char
+            continue
+        n = ord(char)
+        n -= 65  
+        key_inverse = pow(a, -1, 26)
+        n = ((n-b) * key_inverse) % 26
+        n += 65 
+        str_result += chr(n)
+        
     return str_result
