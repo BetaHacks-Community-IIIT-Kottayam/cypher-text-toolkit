@@ -30,3 +30,12 @@ class TestDecoder(unittest.TestCase):
         self.assertEqual(decoder.affine('V JTPNH ESRLI ORU, BTWWFIQD YTZAFW RCFS V QVMD WRX !', 9, 21), 'A QUICK BROWN FOX, SUDDENLY JUMPED OVER A LAZY DOG !')
     def test_Affine_005(self):
         self.assertEqual(decoder.affine('D NJVBT CMPHQ YPG, LJAAZQSF UJROZA PIZM D SDEF APX !', 25, 3), 'A QUICK BROWN FOX, SUDDENLY JUMPED OVER A LAZY DOG !')
+    # Morse
+    def test_Morse_001(self):
+        self.assertEqual(decoder.morse(".... . .-.. .-.. --- , / .-- --- .-. .-.. -.. !"),"HELLO, WORLD!")
+    def test_Morse_002(self):
+        self.assertEqual(decoder.morse(".--. -.-- - .... --- -. / .. ... / ..-. ..- -."),"PYTHON IS FUN")
+    def test_Morse_003(self):
+        self.assertEqual(decoder.morse(".---- ..--- ...-- ....- ....."),"12345")
+    def test_Morse_004(self):
+        self.assertEqual(decoder.morse(".- .-. .. ..-. .. -.-. .. .- .-.. / .. -. - . .-.. .-.. .. --. . -. -.-. ."),"ARIFICIAL INTELLIGENCE")
