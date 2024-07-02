@@ -47,3 +47,12 @@ class TestEncoder(unittest.TestCase):
         self.assertEqual(encoder.affine('A quick brown fox, suddenly jumped over a lazy dog !', 9, 21), 'V JTPNH ESRLI ORU, BTWWFIQD YTZAFW RCFS V QVMD WRX !')
     def test_Affine_005(self):
         self.assertEqual(encoder.affine('A quick brown fox, suddenly jumped over a lazy dog !', 25, 3), 'D NJVBT CMPHQ YPG, LJAAZQSF UJROZA PIZM D SDEF APX !')
+    # Morse
+    def test_Morse_001(self):
+        self.assertEqual(encoder.morse('Hello, World!'), '.... . .-.. .-.. --- , / .-- --- .-. .-.. -.. !')
+    def test_Morse_002(self):
+        self.assertEqual(encoder.morse('Python is fun'), '.--. -.-- - .... --- -. / .. ... / ..-. ..- -.')
+    def test_Morse_003(self):
+        self.assertEqual(encoder.morse('12345'), '.---- ..--- ...-- ....- .....')
+    def test_Morse_004(self):
+        self.assertEqual(encoder.morse('Arificial intelligence'), '.- .-. .. ..-. .. -.-. .. .- .-.. / .. -. - . .-.. .-.. .. --. . -. -.-. .')

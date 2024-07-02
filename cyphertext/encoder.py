@@ -103,3 +103,35 @@ def affine(message, a, b):
         str_result += chr(n)
 
     return str_result
+
+def morse(message):
+    """
+    Applies the Morse code cipher to the given message.
+
+    Args:
+        message (str): The message to be encoded.
+
+    Returns:
+        str: The encoded message.
+
+    """
+    morse_code = {
+        'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
+        'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
+        'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+        'Y': '-.--', 'Z': '--..',
+        '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...',
+        '8': '---..', '9': '----.', '0': '-----',
+        ',': '--..--', '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'
+    }
+    str_result = ""
+    for char in message:
+        if char.isalpha():
+            str_result += morse_code[char.upper()] + " "
+        elif char.isdigit():
+            str_result += morse_code[char] + " "
+        elif char == " ":
+            str_result += "/ "
+        else:
+            str_result += char + " "
+    return str_result.strip()
