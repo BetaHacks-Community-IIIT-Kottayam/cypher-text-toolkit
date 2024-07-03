@@ -39,3 +39,14 @@ class TestDecoder(unittest.TestCase):
         self.assertEqual(decoder.morse(".---- ..--- ...-- ....- ....."),"12345")
     def test_Morse_004(self):
         self.assertEqual(decoder.morse(".- .-. .. ..-. .. -.-. .. .- .-.. / .. -. - . .-.. .-.. .. --. . -. -.-. ."),"ARIFICIAL INTELLIGENCE")
+    # XOR
+    def test_XOR_001(self):
+        self.assertEqual(decoder.xor(["23","00","15","07","0a","55","4b","32","16","19","09","1d","4a"],"key"), 'Hello, World!')
+    def test_XOR_002(self):
+        self.assertEqual(decoder.xor(["23","1c","17","1a","0a","1a","53","0c","10","52","03","01","1d"],"secret"), 'Python is fun')
+    def test_XOR_003(self):
+        self.assertEqual(decoder.xor(["33","0e","17","1a","19","08","52","0d","03","41","12","04","12","1c","1d","09","15"],"password"), 'Coding is awesome')
+    def test_XOR_004(self):
+        self.assertEqual(decoder.xor(["2c","0c","0d","23","10","1b","4b","26","16","1b","0c","15","04","11"],"key"), 'GitHub Copilot')
+    def test_XOR_005(self):
+        self.assertEqual(decoder.xor(["32","17","17","1b","03","1d","10","0c","02","1e","45","3d","1d","11","06","1e","09","1d","14","00","0d","11","00"],"secret"), 'Artificial Intelligence')
