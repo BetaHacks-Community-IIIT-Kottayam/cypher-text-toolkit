@@ -56,3 +56,14 @@ class TestEncoder(unittest.TestCase):
         self.assertEqual(encoder.morse('12345'), '.---- ..--- ...-- ....- .....')
     def test_Morse_004(self):
         self.assertEqual(encoder.morse('Arificial intelligence'), '.- .-. .. ..-. .. -.-. .. .- .-.. / .. -. - . .-.. .-.. .. --. . -. -.-. .')
+    # XOR
+    def test_XOR_001(self):
+        self.assertEqual(encoder.xor('Hello, World!', 'key'), '23 00 15 07 0a 55 4b 32 16 19 09 1d 4a')
+    def test_XOR_002(self):
+        self.assertEqual(encoder.xor('Python is fun', 'secret'), '23 1c 17 1a 0a 1a 53 0c 10 52 03 01 1d')
+    def test_XOR_003(self):
+        self.assertEqual(encoder.xor('Coding is awesome', 'password'), '33 0e 17 1a 19 08 52 0d 03 41 12 04 12 1c 1d 09 15')
+    def test_XOR_004(self):
+        self.assertEqual(encoder.xor('GitHub Copilot', 'key'), '2c 0c 0d 23 10 1b 4b 26 16 1b 0c 15 04 11')
+    def test_XOR_005(self):
+        self.assertEqual(encoder.xor('Artificial Intelligence', 'secret'), '32 17 17 1b 03 1d 10 0c 02 1e 45 3d 1d 11 06 1e 09 1d 14 00 0d 11 00')

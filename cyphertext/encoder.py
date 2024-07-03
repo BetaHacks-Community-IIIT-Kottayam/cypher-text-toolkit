@@ -2,7 +2,7 @@
 This module contains functions to encode text using some common ciphers, along with some custom ciphers.
 """
 import string
-def caesar(message, key):
+def caesar(message:str, key:int)-> str:
     """
     Applies the Caesar cipher to the given message using the specified key.
 
@@ -51,7 +51,7 @@ def __remove_punc__(word):
     return_word = word
     return return_word, start_punc , end_punc
 
-def piglatin(message):
+def piglatin(message:str)-> str:
     """
     Applies the Pig Latin cipher to the given message.
 
@@ -77,7 +77,7 @@ def piglatin(message):
             str_result += start_punc + end_punc + " "
     return str_result.strip()
 
-def affine(message, a, b):
+def affine(message:str, a:int, b:int)-> str:
     """
     Applies the Affine cipher to the given message using the specified keys.
 
@@ -104,7 +104,7 @@ def affine(message, a, b):
 
     return str_result
 
-def morse(message):
+def morse(message:str) -> str:
     """
     Applies the Morse code cipher to the given message.
 
@@ -135,3 +135,22 @@ def morse(message):
         else:
             str_result += char + " "
     return str_result.strip()
+
+def xor(message : str, key : str) -> str:
+    """
+    Applies the XOR cipher to the given message using the specified key.
+
+    Args:
+        message (str): The message to be encoded.
+        key (str): The key to XOR the message with. can be of any length.
+
+    Returns:
+        str: The encoded message.
+
+    """
+    key = key*((len(message)//len(key)) + 1)  # repeat the key to match the length of the message
+    key = key[:len(message)] # trim the key to match the length of the message
+    str_result = ""
+    for i in range(len(message)):
+        str_result += chr(ord(message[i]) ^ ord(key[i]))
+    return ' '.join(format(ord(c), '02x') for c in str_result)

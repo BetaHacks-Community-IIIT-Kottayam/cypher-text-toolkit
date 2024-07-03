@@ -1,7 +1,8 @@
 """
 This module contain functions to decode text using some common ciphers, along with some custom ciphers.
 """
-def caesar(message, key):
+from typing import List
+def caesar(message:str, key:int):
     """
     Decode a message encrypted using the Caesar cipher.
 
@@ -27,7 +28,7 @@ def caesar(message, key):
             str_result += char
     return str_result
 
-def affine(message, a, b):
+def affine(message:str, a:int, b:int):
     """
     Decode a message encrypted using the Affine cipher.
 
@@ -55,7 +56,7 @@ def affine(message, a, b):
         
     return str_result
 
-def morse(message):
+def morse(message:str)-> str:
     """
     Decode a message encrypted using the Morse cipher.
 
@@ -81,4 +82,25 @@ def morse(message):
             str_result += inv_morse_code[char]
         else:
             str_result += char
+    return str_result
+
+def xor(message : List, key : str) -> str:
+    """
+    Decodes the given message using the specified key.
+
+    Args:
+        message (LIst): The message to be decoded in form of a list of hex values.
+        key (str): The key to XOR the message with. can be of any length.
+
+    Returns:
+        str: The decoded message.
+
+    """
+    message = [int(i,16) for i in message]
+    message = ''.join([chr(i) for i in message])
+    key = key*((len(message)//len(key)) + 1)  # repeat the key to match the length of the message
+    key = key[:len(message)] # trim the key to match the length of the message
+    str_result = ""
+    for i in range(len(message)):
+        str_result += chr(ord(message[i]) ^ ord(key[i]))
     return str_result
