@@ -75,6 +75,6 @@ class TestEncoder(unittest.TestCase):
     def test_Base64_003(self):
         self.assertEqual(encoder.base64('Coding is awesome'), 'Q29kaW5nIGlzIGF3ZXNvbWU=')
     def test_Base64_004(self):
-        self.assertEqual(encoder.base64('GitHub Copilot'), 'R0lGODogQ29waWxvdA==')
+        self.assertEqual(encoder.base64('GitHub Copilot'), 'R2l0SHViIENvcGlsb3Q=')
     def test_Base64_005(self):
         self.assertEqual(encoder.base64('Artificial Intelligence'), 'QXJ0aWZpY2lhbCBJbnRlbGxpZ2VuY2U=')
