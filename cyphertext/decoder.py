@@ -1,7 +1,7 @@
 """
 This module contain functions to decode text using some common ciphers, along with some custom ciphers.
 """
-import base64
+import pybase64
 
 from typing import List
 def caesar(message:str, key:int):
@@ -156,7 +156,7 @@ def base64(message:str)-> str:
     base64_bytes = message.encode('utf-8')
     
     # Decode the Base64 bytes
-    byte_string = base64.b64decode(base64_bytes)
+    byte_string = pybase64.b64decode(base64_bytes)
     
     # Convert the decoded bytes back to a string
     decoded_string = byte_string.decode('utf-8')

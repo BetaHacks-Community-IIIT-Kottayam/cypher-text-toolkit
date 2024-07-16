@@ -2,7 +2,7 @@
 This module contains functions to encode text using some common ciphers, along with some custom ciphers.
 """
 import string
-import base64
+import pybase64
 
 def caesar(message:str, key:int)-> str:
     """
@@ -171,7 +171,7 @@ def base64(message:str)-> str:
     byte_string = message.encode('utf-8')
     
     # Encode the byte string using Base64
-    base64_bytes = base64.b64encode(byte_string)
+    base64_bytes = pybase64.b64encode(byte_string)
     
     # Convert the Base64 bytes back to a string
     base64_string = base64_bytes.decode('utf-8')
