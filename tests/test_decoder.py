@@ -54,10 +54,10 @@ class TestDecoder(unittest.TestCase):
     def test_Base64_001(self):
         self.assertEqual(decoder.base64('SGVsbG8sIFdvcmxkIQ=='), 'Hello, World!')
     def test_Base64_002(self):
-        self.assertEqual(decoder.base64('UGh5dG9uIGlzIGZ1bg=='), 'Python is fun')
+        self.assertEqual(decoder.base64('UHl0aG9uIGlzIGZ1bg=='), 'Python is fun')
     def test_Base64_003(self):
         self.assertEqual(decoder.base64('MTIzNDU='), '12345')
     def test_Base64_004(self):
-        self.assertEqual(decoder.base64('QXJ0aWZpY2lhbCBJbnRlbGxpZWljaW5nZQ=='), 'Artificial Intelligence')
+        self.assertEqual(decoder.base64('QXJ0aWZpY2lhbCBJbnRlbGxpZ2VuY2U='), 'Artificial Intelligence')
     def test_Base64_005(self):
-        self.assertEqual(decoder.base64('R2l0SHViIENvcG9saXQ='), 'GitHub Copilot')
+        self.assertEqual(decoder.base64('R2l0SHViIENvcGlsb3Q='), 'GitHub Copilot')
