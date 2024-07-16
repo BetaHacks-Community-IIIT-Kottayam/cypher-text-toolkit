@@ -1,6 +1,8 @@
 """
 This module contain functions to decode text using some common ciphers, along with some custom ciphers.
 """
+import base64
+
 from typing import List
 def caesar(message:str, key:int):
     """
@@ -104,3 +106,59 @@ def xor(message : List, key : str) -> str:
     for i in range(len(message)):
         str_result += chr(ord(message[i]) ^ ord(key[i]))
     return str_result
+
+
+# this function is not working for frequencies below 500Hz
+# def morse_audio(file_path:str)->str:
+#     """
+#     Decodes Morse code from an audio file.
+
+#     Args:
+#         file_path (str): The path to the audio file.
+
+#     Returns:
+#         str: The decoded Morse code.
+
+#     """
+#     warnings.filterwarnings("ignore", category=FutureWarning)
+#     sample_rate, data = wavfile.read(file_path)
+#     if data.ndim > 1:
+#         data = np.mean(data, axis=1)
+#     time = np.linspace(0, len(data) / sample_rate, len(data))
+#     df = pd.DataFrame({'Time': time, 'Amplitude': data})
+#     df['Amplitude'] = np.where(df['Amplitude'] == 128, 0, 128)
+#     changes = np.diff(df['Amplitude']) != 0
+#     segment_indices = np.flatnonzero(changes) + 1
+#     segments = np.split(df, segment_indices)
+#     heights = sorted(set(len(seg) for seg in segments if seg['Amplitude'].iloc[0] == 128), reverse=True)
+#     spaces = sorted(set(len(seg) for seg in segments if seg['Amplitude'].iloc[0] == 0), reverse=True)
+#     decode_dict = {
+#         heights[0]: '-',
+#         heights[1]: '.',
+#         spaces[0]: ' / ',
+#         spaces[1]: ' ',
+#     }
+#     width_arr = [len(seg) for seg in segments if len(seg) > 10]
+#     decoded_morse_code = ''.join(decode_dict.get(width, '') for width in width_arr)
+#     return morse(decoded_morse_code)
+
+def base64(message:str)-> str:
+    """
+    Decode the given Base64 encoded string.
+
+    Parameters:
+    message (str): The Base64 encoded string to be decoded.
+
+    Returns:
+    str: The decoded string.
+    """
+    # Convert the Base64 encoded string to bytes
+    base64_bytes = message.encode('utf-8')
+    
+    # Decode the Base64 bytes
+    byte_string = base64.b64decode(base64_bytes)
+    
+    # Convert the decoded bytes back to a string
+    decoded_string = byte_string.decode('utf-8')
+    
+    return decoded_string

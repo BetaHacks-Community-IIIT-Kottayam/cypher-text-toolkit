@@ -2,6 +2,8 @@
 This module contains functions to encode text using some common ciphers, along with some custom ciphers.
 """
 import string
+import base64
+
 def caesar(message:str, key:int)-> str:
     """
     Applies the Caesar cipher to the given message using the specified key.
@@ -154,3 +156,25 @@ def xor(message : str, key : str) -> str:
     for i in range(len(message)):
         str_result += chr(ord(message[i]) ^ ord(key[i]))
     return ' '.join(format(ord(c), '02x') for c in str_result)
+
+def base64(message:str)-> str:
+    """
+    Encode the given string using Base64 encoding.
+
+    Parameters:
+    message (str): The string to be encoded.
+
+    Returns:
+    str: The Base64 encoded string.
+    """
+    # Convert the input string to bytes
+    byte_string = message.encode('utf-8')
+    
+    # Encode the byte string using Base64
+    base64_bytes = base64.b64encode(byte_string)
+    
+    # Convert the Base64 bytes back to a string
+    base64_string = base64_bytes.decode('utf-8')
+    
+    return base64_string
+

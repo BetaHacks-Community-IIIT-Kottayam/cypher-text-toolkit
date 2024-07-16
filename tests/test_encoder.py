@@ -67,3 +67,5 @@ class TestEncoder(unittest.TestCase):
         self.assertEqual(encoder.xor('GitHub Copilot', 'key'), '2c 0c 0d 23 10 1b 4b 26 16 1b 0c 15 04 11')
     def test_XOR_005(self):
         self.assertEqual(encoder.xor('Artificial Intelligence', 'secret'), '32 17 17 1b 03 1d 10 0c 02 1e 45 3d 1d 11 06 1e 09 1d 14 00 0d 11 00')
+    
+
