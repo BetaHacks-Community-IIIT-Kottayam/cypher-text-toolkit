@@ -1,1 +1,1 @@
-numpy
+pybase64==1.3.2

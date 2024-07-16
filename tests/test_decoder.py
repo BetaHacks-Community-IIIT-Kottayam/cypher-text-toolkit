@@ -50,3 +50,14 @@ class TestDecoder(unittest.TestCase):
         self.assertEqual(decoder.xor(["2c","0c","0d","23","10","1b","4b","26","16","1b","0c","15","04","11"],"key"), 'GitHub Copilot')
     def test_XOR_005(self):
         self.assertEqual(decoder.xor(["32","17","17","1b","03","1d","10","0c","02","1e","45","3d","1d","11","06","1e","09","1d","14","00","0d","11","00"],"secret"), 'Artificial Intelligence')
+    # Base64
+    def test_Base64_001(self):
+        self.assertEqual(decoder.base64('SGVsbG8sIFdvcmxkIQ=='), 'Hello, World!')
+    def test_Base64_002(self):
+        self.assertEqual(decoder.base64('UHl0aG9uIGlzIGZ1bg=='), 'Python is fun')
+    def test_Base64_003(self):
+        self.assertEqual(decoder.base64('MTIzNDU='), '12345')
+    def test_Base64_004(self):
+        self.assertEqual(decoder.base64('QXJ0aWZpY2lhbCBJbnRlbGxpZ2VuY2U='), 'Artificial Intelligence')
+    def test_Base64_005(self):
+        self.assertEqual(decoder.base64('R2l0SHViIENvcGlsb3Q='), 'GitHub Copilot')
