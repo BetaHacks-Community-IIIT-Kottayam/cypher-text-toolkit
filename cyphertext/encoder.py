@@ -3,6 +3,8 @@ This module contains functions to encode text using some common ciphers, along w
 """
 import string
 import pybase64
+from Crypto.Util.number import inverse, GCD ,long_to_bytes
+from sympy import randprime
 
 def caesar(message:str, key:int)-> str:
     """
@@ -178,3 +180,80 @@ def base64(message:str)-> str:
     
     return base64_string
 
+def generate_rsa_keys(p:int, q:int)->tuple:
+    """
+    Generate RSA modulus, private key, and public key from two prime numbers.
+
+    Parameters:
+    p (int): A prime number.
+    q (int): Another prime number.
+
+    Returns:
+    tuple: A tuple containing the modulus (n), private key (d), and public key (e).
+    """
+    # Calculate n
+    n = p * q
+    
+    # Calculate the totient
+    phi_n = (p - 1) * (q - 1)
+    
+    # Choose public exponent e (commonly 65537)
+    e = 65537
+    if GCD(e, phi_n) != 1:
+        raise ValueError("e and phi(n) are not coprime. Choose a different e.")
+    
+    # Calculate the private exponent d
+    d = inverse(e, phi_n)
+    
+    return n, e, d
+
+def get_random_keys(bits=1024)-> tuple:
+    """
+    Generate random prime numbers p and q of the specified bit length (default 1024).
+    Then generate RSA modulus, private key, and public key from these prime numbers.
+
+    Parameters:
+    bits (int): The bit length of the prime numbers. Default is 1024.
+
+    Returns:
+    tuple: A tuple containing the modulus (n), private key (d), and public key (e).
+    """
+    # Generate random prime p
+    p = randprime(2**(bits//2), 2**(bits//2 + 1))
+    
+    # Generate random prime q, ensuring it's different from p
+    while True:
+        q = randprime(2**(bits//2), 2**(bits//2 + 1))
+        if q != p:
+            break
+    
+    return generate_rsa_keys(p, q)
+
+def rsa(n:int, c:str, d:int ,string_output=False)-> str:
+    """
+    Decrypt an RSA encrypted message.
+
+    Parameters:
+    n (int): The modulus (product of two prime numbers p and q).
+    c (str): The message .
+    d (int): The exponent key.
+    string_output (bool): If True, the decrypted message will be returned as a string if possible. Otherwise, it will be returned as an integer.
+
+    Returns:
+    str: The decrypted message.
+    """
+    try:
+        c=int(c)
+    except:
+        pass
+    if not isinstance(c,int):
+        c=c.encode('utf-8')
+        c=int.from_bytes(c, 'big')
+    # Decrypt the message using RSA formula: m = c^d % n
+    m = pow(c, d, n)
+    if string_output:
+        try:
+            return long_to_bytes(m).decode('utf-8')
+        except:
+            return str(m)
+    return str(m)
