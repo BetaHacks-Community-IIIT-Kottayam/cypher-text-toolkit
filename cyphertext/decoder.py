@@ -2,6 +2,7 @@
 This module contain functions to decode text using some common ciphers, along with some custom ciphers.
 """
 import pybase64
+from Crypto.Util.number import long_to_bytes
 
 from typing import List
 def caesar(message:str, key:int):
@@ -162,3 +163,32 @@ def base64(message:str)-> str:
     decoded_string = byte_string.decode('utf-8')
     
     return decoded_string
+
+def rsa(n:int, c:str, d:int ,string_output=False)-> str:
+    """
+    Decrypt an RSA encrypted message.
+
+    Parameters:
+    n (int): The modulus (product of two prime numbers p and q).
+    c (str): The encrypted message .
+    d (int): The exponent key.
+    string_output (bool): If True, the decrypted message will be returned as a string if possible. Otherwise, it will be returned as an integer.
+
+    Returns:
+    str: The decrypted message.
+    """
+    try:
+        c=int(c)
+    except:
+        pass
+    if not isinstance(c,int):
+        c=c.encode('utf-8')
+        c=int.from_bytes(c, 'big')
+    # Decrypt the message using RSA formula: m = c^d % n
+    m = pow(c, d, n)
+    if string_output:
+        try:
+            return long_to_bytes(m).decode('utf-8')
+        except:
+            return str(m)
+    return str(m)
